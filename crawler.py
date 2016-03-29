@@ -102,7 +102,7 @@ if __name__ == "__main__":
     # Bonus1, persist the results in SQLite
     print("Data {0} : OK".format(persist(data)))
 
-    # Bonus1/Bonus3 run ReST API server
+    # Bonus1/Bonus3 run ReST API server with signal for Ctrl-C
     def signal_handler(signal, frame):
         sys.exit(0)
 
