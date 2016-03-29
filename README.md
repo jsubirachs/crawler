@@ -11,7 +11,7 @@ The main goal of this tech task is to write a news crawler. In order to simply t
 For the tech task to write a news crawler I decided to use the [scrapy](http://scrapy.org/) framework because is so powerful (based in Twisted, then asynchronous fast requests), well documented and very confortable using xpath or css. Plus benefit the port to python3 in the last months, I wanted to try it. With other options, getting the source with any library like urllib, using parsers like Beautifulsoup or lxml, are great for few urls, but if you have a lot of urls and want to do it quicky then need some asynchronous, multiprocess or threat library.
 
 ### Installing:
-First, is recommended to use a virtual environment. With python3 its easy:
+First, is recommended to use a virtual environment. With python3 it's easy:
 ```
 $ python3 -m venv venv
 $ . venv/bin/activate
@@ -22,8 +22,9 @@ Then you can proceed to intall scrapy for python3:
 (env)$ pip install scrapy==1.1.0rc1
 ```
 ### Comments:
- - I use an OrderedDict() for save the data in order because is more easy to verify all ok.
- - I use 'COOKIES_ENABLED': False settings because without this not all the urls loading well.
+ - I used RSS feed (xml file) for obtain the urls.
+ - I used an OrderedDict() for save the data in order because is more easy to verify all ok.
+ - I used 'COOKIES_ENABLED': False settings because without this not all the urls loading well.
 
 ## Bonus:
 1. Persist the results in a database (e.g., SQLite) and expose a ReST API to access some statistics (by article, by day, etc);
@@ -65,7 +66,7 @@ Another ReST API with bottle, but this case using another method (POST) with for
 Don't implemented because when I had read the exercice I didn't know the Continuous Integration concept and let this question for the last. So I didn't update my git branche in every successful code test like CI says.
 
 ## Last Comments:
- - I prefer separate in diferent modules the principal exercice and the bonus for better maintainability and test.
+ - I prefer to separate in diferent modules the principal exercice and the bonus for better maintainability and test.
  - I created a Ctrl-C KeyboardInterrupt signal for bottle server because seems that maybe Twisted reactor block this exception and then bottle server doesn't respond to this keys.
 
 ## Run:
