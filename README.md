@@ -30,7 +30,6 @@ Then you can proceed to intall scrapy for python3:
 2. Implement another statistic that returns the average size of images in a article;
 3. Create a ReST API end-point that receives an URL and crawls in on-demand;
 4. Use of a Continuous Integration system (Hint: TravisCI)
-5. 
 
 ## Bonus resolution:
 ### Bonus 1:
@@ -42,3 +41,28 @@ You need install bottle:
 ```
 (venv)$ pip install bottle
 ```
+### Bonus 1 Comments:
+ - This ReST API use only method='GET'
+     - url: http://localhost:8080/bonus1
+       - data received: json with db table names
+     - url: http://localhost:8080/bonus1/<date>
+       - data received: json with db table name items by id
+     - url: http://localhost:8080/bonus1/<date>/<id>
+       - data received: json with id item information
+
+### Bonus 2:
+Don't implemented because the images are loaded through javascript and scrapy by default doesn't run it. The unique visible images in the article are always the same, static images in the header and footer. The solution to this problem is add more libraries to execute javascript and extract 'height' and 'width' attributes and calculate the average.
+
+### Bonus 3:
+Another ReST API with bottle, but this case using another method (POST) with format json. You need to send 'url' and 'xpath' for the crawler. This time the crawler isn't scrapy. I decided to use urllib for the request and lxml for the parser (installed automatically when install scrapy) because is only one url and the speed and code is optimum.
+### Bonus 3 Comments:
+  - This ReST API use only method='POST'
+      - url: http://localhost:8080/bonus3
+        - data send: json {"url":"", "xpath":""}
+
+### Bonus 4:
+Don't implemented because when read the exercice I didn't know the Continuous Integration concept and let this question for the last. So I didn't update my git branche in every successful code test like CI says.
+
+## Last Comments:
+ - I prefer separate in diferent modules the principal exercice and the bonus for better maintainability and test.
+ - I created a Ctrl-C KeyboardInterrupt signal for bottle server because seems that maybe Twisted reactor block this exception and then bottle server doesn't respond to this keys.
